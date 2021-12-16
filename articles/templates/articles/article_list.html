@@ -1,0 +1,18 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+    {% for article in all_articles %}
+          <div class="card">
+            <div class="card-header">
+                <a class="link-dark" href="{% url 'article_detail' article.id %}">
+                    <span class="font-weight-bold">{{ article.title }} </span>
+                </a>
+                <span class="text-muted">{{article.author}} |</span>
+                <small class="text-muted">{{ article.date_posted|date:"F d Y" }} </small>
+            </div>
+          </div>
+    {% endfor %}
+        <br>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary" href="{% url 'article_new' %}" role="button">Create Article</a>
+        {% endif %}
+{% endblock content %}
