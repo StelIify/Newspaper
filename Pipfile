@@ -9,6 +9,8 @@ environs = {version = "==8.0.0", extras = ["django"]}
 psycopg2-binary = "*"
 whitenoise = "==5.1.0"
 gunicorn = "*"
+pillow = "*"
+crispy-bootstrap5 = "*"
 
 [dev-packages]
 
