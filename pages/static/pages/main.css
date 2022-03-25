@@ -1,0 +1,14 @@
+.account-img {
+  height: 250px;
+  width: 250px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+.form-group{
+  padding: 10px 20px;
+}
