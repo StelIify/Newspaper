@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Article
+from django.shortcuts import render, get_object_or_404
+from .models import Article, Comment
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -45,3 +45,14 @@ class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         obj = self.get_object()
         return obj.author == self.request.user
+
+
+class CommentCreateView(CreateView):
+    model = Comment
+    template_name = 'articles/comment_create.html'
+    fields = ['comment']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.article_id = self.kwargs.get('pk')
+        return super().form_valid(form)

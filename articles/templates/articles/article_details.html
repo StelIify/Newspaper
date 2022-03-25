@@ -12,6 +12,7 @@
         <div class="card-footer text-center text-muted">
             <a href="{% url 'article_update' article.id %}">Update Article</a> | <a href="{% url 'article_delete' article.id %}">Delete Article</a>
         </div>
+        <a href="{% url 'article_comment' article.id %}"> Leave a comment </a>
         <div class="card-footer">
             {% for comment in article.comments.all %}
              <p>
