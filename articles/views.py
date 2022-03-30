@@ -3,12 +3,26 @@ from .models import Article, Comment
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from accounts.models import CustomUser
 
 
 class ArticlesPageView(ListView):
     model = Article
     template_name = 'articles/article_list.html'
     context_object_name = 'all_articles'
+    paginate_by = 5
+    ordering = ['-date_posted']
+
+
+class UserPostListView(ListView):
+    model = Article
+    template_name = 'articles/user_articles.html'
+    context_object_name = 'user_articles'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(CustomUser, username=self.kwargs.get('username')) # get username from url
+        return Article.objects.filter(author=user).order_by('-date_posted')
 
 
 class ArticleDetailView(LoginRequiredMixin, DetailView):

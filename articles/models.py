@@ -28,6 +28,6 @@ class Comment(models.Model):
         return self.comment
 
     def get_absolute_url(self):
-        return reverse('articles')
+        return reverse('article_detail', kwargs={'pk': self.article.pk})
 
 

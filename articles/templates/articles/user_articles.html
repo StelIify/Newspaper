@@ -1,15 +1,13 @@
 {% extends 'pages/base.html' %}
 {% block content %}
-    <br>
-    {% for article in all_articles %}
+    <h2>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+    {% for article in user_articles %}
           <div class="card">
             <div class="card-header">
                 <a class="link-primary text-decoration-none" href="{% url 'article_detail' article.id %}">
                     {{ article.title }} <span class="text-muted"> | </span>
                 </a>
-                <a class="text-decoration-none" href="{% url 'user_articles' article.author.username %}">
-                    <span class="text-muted">{{ article.author }} | </span>
-                </a>
+                <span class="text-muted">{{ article.author }} | </span>
                 <small class="text-muted">{{ article.date_posted|date:"F d Y" }} </small>
             </div>
           </div>
