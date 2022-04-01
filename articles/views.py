@@ -14,7 +14,7 @@ class ArticlesPageView(ListView):
     ordering = ['-date_posted']
 
 
-class UserPostListView(ListView):
+class UserArticlesListView(ListView):
     model = Article
     template_name = 'articles/user_articles.html'
     context_object_name = 'user_articles'
