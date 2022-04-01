@@ -1,11 +1,6 @@
 .env
 __pycache__/
 db.sqlite3
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
 /venv/
 /media/profile_pictures/
 .coverage
